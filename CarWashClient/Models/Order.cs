@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-//using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CarWashClient.Models
 {    
@@ -10,11 +6,9 @@ namespace CarWashClient.Models
     {
         public long Id { get; set; }
         public string NameClient { get; set; }
-        public string PhoneClient { get; set; }
+        public string? PhoneClient { get; set; }
         public string? NameService { get; set; }        
         public byte Amount { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
         public decimal Price { get; set; }        
         public DateTime DateOfServiceProvision { get; set; }
     }
