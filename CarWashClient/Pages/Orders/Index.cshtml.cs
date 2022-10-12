@@ -1,28 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using CarWashClient.Data;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using CarWashClient.Models;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
-using System.Collections;
 
 namespace CarWashClient.Pages.Orders
 {
     public class IndexModel : PageModel
-    {
-        private readonly CarWashClientContext _context;
-
-        public IndexModel(CarWashClientContext context)
+    {       
+        private ObservableCollection<Order> orders;
+        public ObservableCollection<Order> Order
         {
-            _context = context;
+            get { return orders; }
+            set { orders = value; }
         }
-
-        public IList<Order> Order { get;set; } = default!;
 
         public async Task OnGetAsync()
         {            
@@ -34,7 +24,7 @@ namespace CarWashClient.Pages.Orders
                     {
                         var ordersJsonString = await response.Content.ReadAsStringAsync();
 
-                        Order = new List<Order>(JsonConvert.DeserializeObject<Order[]>(ordersJsonString)).ToList();
+                        orders = new ObservableCollection<Order>(JsonConvert.DeserializeObject<Order[]>(ordersJsonString));
                     }
                     else { }
                 }
