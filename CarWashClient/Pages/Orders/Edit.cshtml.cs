@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CarWashClient.Data;
 using CarWashClient.Models;
+using Newtonsoft.Json;
 
 namespace CarWashClient.Pages.Orders
 {
@@ -23,21 +24,21 @@ namespace CarWashClient.Pages.Orders
         [BindProperty]
         public Order Order { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(long? id)
-        {
-            if (id == null || _context.Order == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> OnGetAsync(long? id)
+        //{
+        //    if (id == null || _context.Order == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var order =  await _context.Order.FirstOrDefaultAsync(m => m.Id == id);
-            if (order == null)
-            {
-                return NotFound();
-            }
-            Order = order;
-            return Page();
-        }
+        //    var order =  await _context.Order.FirstOrDefaultAsync(m => m.Id == id);
+        //    if (order == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    Order = order;
+        //    return Page();
+        //}
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.

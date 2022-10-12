@@ -31,14 +31,26 @@ namespace CarWashClient.Pages.Orders
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid)
+          if (!ModelState.IsValid)                
             {
                 return Page();
             }
 
-            _context.Order.Add(Order);
-            await _context.SaveChangesAsync();
+            Order.DateOfServiceProvision = DateTime.Now;
 
+            using (var client = new HttpClient())
+            {
+                var body = Newtonsoft.Json.JsonConvert.SerializeObject(Order);
+
+                using (var response = await client.PostAsync("https://localhost:5001/api/orders", new StringContent(body, System.Text.Encoding.Unicode, "application/json")))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        
+                    }
+                    else { }
+                }
+            }
             return RedirectToPage("./Index");
         }
     }
