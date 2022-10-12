@@ -1,0 +1,55 @@
+﻿@page
+@model CarWashClient.Pages.Orders.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.NameClient)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.NameClient)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.PhoneClient)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.PhoneClient)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.NameService)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.NameService)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.Amount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.Amount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.DateOfServiceProvision)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.DateOfServiceProvision)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Order?.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
