@@ -34,7 +34,7 @@ namespace CarWashClient.Pages.Orders
                     {
                         var ordersJsonString = await response.Content.ReadAsStringAsync();
 
-                        Order = new List<Order>(JsonConvert.DeserializeObject<Order[]>(ordersJsonString)).ToList(); //ObservableCollection<Phone>(JsonConvert.DeserializeObject<Phone[]>(booksJsonString).ToList());
+                        Order = new List<Order>(JsonConvert.DeserializeObject<Order[]>(ordersJsonString)).ToList();
                     }
                     else { }
                 }
