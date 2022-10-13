@@ -9,6 +9,7 @@ namespace CarWashClient.Models
         public string? PhoneClient { get; set; }
         public string? NameService { get; set; }        
         public byte Amount { get; set; }
+        [DataType(DataType.Currency)]
         public decimal Price { get; set; }        
         public DateTime DateOfServiceProvision { get; set; }
     }
